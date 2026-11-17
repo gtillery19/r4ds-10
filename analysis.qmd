@@ -6,6 +6,7 @@ execute:
 ---
 
 ```{r}
+#| include: false
 #| message: false
 library(tidyverse)
 library(rvest)
@@ -14,6 +15,7 @@ library(purrr)
 ```
 
 ```{r}
+#| include: false
 #| cache: true
 #| message: false
 wayback_years <- c(2015, 2017, 2019, 2021, 2022)
@@ -64,6 +66,7 @@ imdb_snapshots <- map2(
 ```
 
 ```{r}
+#| include: false
 rank_change_data <- imdb_snapshots |>
   filter(snap_year %in% c(2015, 2022)) |>
   select(title, snap_year, rank, year) |>
@@ -89,6 +92,7 @@ rank_change_data |>
 ```
 
 ```{r}
+#| include: false
 snapshot_counts <- imdb_snapshots |>
   group_by(title) |>
   summarise(snapshot_count = n_distinct(snap_year), .groups = "drop")
